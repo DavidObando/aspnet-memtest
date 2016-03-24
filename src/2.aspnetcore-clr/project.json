@@ -4,6 +4,12 @@
     "emitEntryPoint": true,
     "preserveCompilationContext": true
   },
+  "runtimeOptions": {
+    "configProperties": {
+      "System.GC.Server": true,
+      "System.GC.Concurrent": true
+    },
+  },
   "frameworks": {
     "net451": {}
   },
