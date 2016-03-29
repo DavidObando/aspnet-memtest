@@ -21,6 +21,14 @@ namespace HelloWorldMvc
 
         public static void Main(string[] args)
         {
+            if(GCSettings.IsServerGC)
+            {
+                Console.WriteLine("Using ServerGc");
+            }
+            else
+            {
+                Console.WriteLine("Using WorkstationGc");
+            }
             var host = new WebHostBuilder()
                 .UseServer("Microsoft.AspNetCore.Server.Kestrel")
                 .UseDefaultHostingConfiguration(args)

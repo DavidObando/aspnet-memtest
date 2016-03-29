@@ -1,10 +1,11 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using System;
 using System.Text;
+using System.Runtime;
 
 namespace Microsoft.AspNetCore.Test.Perf.WebFx.Apps.HelloWorld
 {
@@ -27,6 +28,14 @@ namespace Microsoft.AspNetCore.Test.Perf.WebFx.Apps.HelloWorld
 
         public static void Main(string[] args)
         {
+            if(GCSettings.IsServerGC)
+            {
+                Console.WriteLine("Using ServerGc");
+            }
+            else
+            {
+                Console.WriteLine("Using WorkstationGc");
+            }
             var host = new WebHostBuilder()
                 .UseServer("Microsoft.AspNetCore.Server.Kestrel")
                 .UseDefaultHostingConfiguration(args)

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Runtime;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -11,6 +9,14 @@ namespace mvc5_clr
     {
         protected void Application_Start()
         {
+            if (GCSettings.IsServerGC)
+            {
+                Console.WriteLine("Using ServerGc");
+            }
+            else
+            {
+                Console.WriteLine("Using WorkstationGc");
+            }
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
