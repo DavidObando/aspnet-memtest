@@ -11,5 +11,11 @@ namespace HelloWorldMvc.Controllers
         {
             return View();
         }
+
+        public IActionResult GC()
+        {
+            System.GC.Collect();
+            return View();
+        }
     }
 }
